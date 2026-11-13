@@ -1,5 +1,36 @@
 import pandas as pd
 from pathlib import Path
+import re
+import unicodedata
+
+
+STOPWORDS_ES = {
+	"a", "al", "algo", "algunas", "algunos", "ante", "antes", "como",
+	"con", "contra", "cual", "cuando", "de", "del", "desde", "donde",
+	"durante", "e", "el", "ella", "ellas", "ellos", "en", "entre", "era",
+	"erais", "eran", "eras", "eres", "es", "esa", "esas", "ese", "eso",
+	"esos", "esta", "estaba", "estaban", "estado", "estais", "estamos",
+	"estan", "estar", "estas", "este", "esto", "estos", "fue", "fueron",
+	"ha", "habeis", "han", "has", "hasta", "hay", "la", "las", "le", "les",
+	"lo", "los", "mas", "me", "mi", "mis", "mucho", "muy", "nada", "ni",
+	"no", "nos", "nosotros", "o", "os", "otra", "otro", "para", "pero",
+	"poco", "por", "porque", "que", "quien", "se", "sea", "ser", "si", "sin",
+	"sobre", "son", "su", "sus", "te", "tiene", "todo", "tu", "tus", "un",
+	"una", "uno", "unos", "vosotros", "y", "ya",
+}
+
+
+def limpiar_texto(texto: str) -> str:
+	"""Normaliza un texto y elimina signos, numeros y stopwords en espanol."""
+	texto_protegido = texto.lower().replace("ñ", "\uE000")
+	texto_normalizado = unicodedata.normalize("NFD", texto_protegido)
+	texto_sin_acentos = "".join(
+		caracter
+		for caracter in texto_normalizado
+		if unicodedata.category(caracter) != "Mn"
+	).replace("\uE000", "ñ")
+	tokens = re.sub(r"[^a-zñ\s]", " ", texto_sin_acentos).split()
+	return " ".join(token for token in tokens if token not in STOPWORDS_ES)
 
 
 def cargar_textos() -> pd.DataFrame:
@@ -15,5 +46,9 @@ def cargar_textos() -> pd.DataFrame:
 	return pd.DataFrame(registros, columns=["texto", "categoria"])
 
 df = cargar_textos()
+print("Carga de Documentos:")
 print(df.head(10))
+df["texto_limpio"] = df["texto"].apply(limpiar_texto)
+print("Textos Limpios:")
+print(df[["texto_limpio", "categoria"]].head(10))
 
