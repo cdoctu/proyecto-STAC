@@ -1,0 +1,3 @@
+Procedimiento de respuesta a incidentes de seguridad
+
+Este procedimiento explica qué hacer cuando ocurre un incidente de seguridad, como un virus, un acceso no autorizado o la pérdida de datos. Quien detecte el problema debe avisar de inmediato al equipo de seguridad por el correo o el teléfono de emergencia. El equipo clasifica el incidente según su gravedad: bajo, medio o alto. Después se contiene el problema, por ejemplo aislando el equipo de la red. Se investiga la causa y se eliminan las amenazas. Si hay datos de clientes afectados, la dirección decide si se les avisa. Al final se escribe un informe del incidente con las acciones para evitar que vuelva a pasar.

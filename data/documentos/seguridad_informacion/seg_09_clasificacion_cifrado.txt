@@ -1,0 +1,3 @@
+Política de clasificación y cifrado de la información
+
+La información de NovaTech se clasifica en cuatro niveles: pública, interna, confidencial y restringida. La información pública se puede compartir libremente, como el sitio web. La interna es para los colaboradores, como las políticas. La confidencial incluye contratos y datos de clientes, y solo la ven quienes la necesitan. La restringida, como las llaves de cifrado, tiene acceso muy limitado. Los datos confidenciales y restringidos se cifran cuando se guardan y cuando viajan por la red. Los documentos deben llevar una etiqueta con su nivel. Para compartir información confidencial fuera de la empresa se necesita un acuerdo de confidencialidad firmado.

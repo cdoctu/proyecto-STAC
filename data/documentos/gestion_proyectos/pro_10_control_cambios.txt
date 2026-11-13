@@ -1,0 +1,3 @@
+Procedimiento de control de cambios del proyecto
+
+Cuando el cliente pide algo nuevo después de aprobar el alcance, se debe seguir este proceso. El líder de proyecto registra la solicitud en el formato de cambios y el equipo analiza cuánto tiempo y presupuesto necesita. Se presenta al cliente un resumen con el impacto en la fecha de entrega y en el costo. Si el cliente aprueba, el cambio se firma y se agrega al backlog con su prioridad. Si no aprueba, se queda en la lista de ideas para una segunda fase. No se debe empezar a trabajar en un cambio sin aprobación por escrito. Todos los cambios se guardan en la bitácora del proyecto.

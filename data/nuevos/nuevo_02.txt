@@ -1,0 +1,3 @@
+Guía para escribir pruebas unitarias en el módulo de inventarios
+
+Esta guía explica cómo escribir pruebas unitarias para el módulo de inventarios con pytest. Cada prueba debe revisar una sola cosa, por ejemplo que al registrar una salida de 5 unidades, la existencia baje en 5. Los nombres de las pruebas describen lo que se espera, como test_salida_reduce_existencia. Se usa una base de datos de prueba en memoria y se crean los datos necesarios dentro de cada prueba. Para las partes que llaman a otros servicios se usan mocks, así no se depende de que el servicio esté disponible. Hay que probar también los casos de error, como una salida mayor a la existencia. Las pruebas deben correr en menos de dos minutos.

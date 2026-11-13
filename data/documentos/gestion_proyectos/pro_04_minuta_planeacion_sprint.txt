@@ -1,0 +1,3 @@
+Minuta de planeación del sprint 5
+
+Fecha: 14 de septiembre. Asistentes: líder de proyecto, product owner, cuatro desarrolladores y el tester. Se revisó el backlog y el equipo acordó el objetivo del sprint: terminar el módulo de reportes. Se seleccionaron 12 historias de usuario con un total de 34 puntos. La capacidad del equipo es de 36 puntos porque una persona estará de vacaciones. Acuerdos: Luis hará la API de reportes, Ana el diseño de las gráficas y el tester preparará los casos de prueba desde el segundo día. Pendientes: confirmar con el cliente el formato del archivo de exportación. Próxima reunión: revisión del sprint el 28 de septiembre.

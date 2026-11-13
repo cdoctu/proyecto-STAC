@@ -1,0 +1,3 @@
+Guía de control de versiones con Git
+
+Usamos Git con un flujo de ramas sencillo. La rama main siempre contiene el código que está en producción. Para cada tarea se crea una rama nueva a partir de main con el nombre feature/ y una descripción corta, por ejemplo feature/descuentos-inventario. Para corregir errores urgentes se usa la rama hotfix/. Los commits deben tener mensajes claros, como Agrega validación del RFC. No se debe hacer push directo a main, porque está protegida. Las ramas se borran después del merge para mantener el repositorio ordenado. Si hay conflictos al unir cambios, el desarrollador los resuelve en su rama y vuelve a correr las pruebas.

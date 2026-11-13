@@ -1,0 +1,3 @@
+Guía de diseño de la base de datos de inventarios
+
+Esta guía describe cómo se diseña la base de datos del módulo de inventarios. Se usa PostgreSQL con tablas para productos, almacenes, movimientos y proveedores. Cada tabla tiene una llave primaria y las relaciones se hacen con llaves foráneas. Los nombres de las tablas van en plural y en minúsculas, por ejemplo productos. Los cambios en la estructura se hacen con migraciones, nunca de forma manual en producción. Las consultas que tardan más de un segundo deben revisarse y, si es necesario, se crean índices. Las consultas de reportes grandes se corren en una réplica de lectura para no afectar a los usuarios.

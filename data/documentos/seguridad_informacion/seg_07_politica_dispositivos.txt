@@ -1,0 +1,3 @@
+Política de uso de dispositivos de la empresa
+
+La política de dispositivos establece cómo se cuidan los equipos de la empresa. Las laptops tienen el disco cifrado, antivirus y bloqueo de pantalla automático después de cinco minutos. No se permite instalar programas que no estén aprobados por el área de sistemas. Los colaboradores no deben conectar memorias USB desconocidas. Si se usa un teléfono personal para revisar el correo de la empresa, debe tener contraseña o huella y la aplicación de administración de dispositivos. En caso de pérdida o robo de un equipo, el colaborador debe avisar de inmediato para borrar la información a distancia. Al trabajar desde casa se debe usar la VPN de la empresa.

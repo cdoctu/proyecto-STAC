@@ -1,0 +1,3 @@
+Procedimiento de gestión de vulnerabilidades
+
+Este procedimiento explica cómo se encuentran y corrigen las vulnerabilidades en los sistemas. Cada semana se ejecuta un escáner automático sobre los servidores y las aplicaciones, y cada trimestre un especialista externo hace pruebas de penetración. Las vulnerabilidades se califican de acuerdo con su riesgo. Las críticas se deben corregir en máximo 48 horas, las altas en dos semanas y las demás en un mes. Los equipos de desarrollo reciben un aviso con los detalles y la forma de corregirlas. También se actualizan las librerías y los sistemas operativos con los parches de seguridad. Al terminar, se vuelve a escanear para confirmar que el problema ya no existe.

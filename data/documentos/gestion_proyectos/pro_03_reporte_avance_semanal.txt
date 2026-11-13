@@ -1,0 +1,3 @@
+Reporte de avance semanal, semana 6
+
+Proyecto App de pedidos, semana 6. Avance general: 42 % contra 45 % planeado. Se terminaron las historias de catálogo y búsqueda de productos. El carrito de compras está en desarrollo y se espera terminar el próximo viernes. Se retrasó el diseño de la pantalla de seguimiento porque el cliente no entregó el logotipo a tiempo. Riesgo: el cliente quiere agregar notificaciones, lo que puede mover la fecha de entrega. Presupuesto gastado: 38 %. Acciones para la próxima semana: cerrar el carrito, empezar pruebas y hacer una junta con el cliente para definir si las notificaciones entran en este proyecto o en una segunda fase.

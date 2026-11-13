@@ -1,0 +1,3 @@
+Guía para detectar correos sospechosos
+
+Esta guía ayuda a detectar correos sospechosos o de phishing. Un correo puede ser peligroso si pide datos personales o contraseñas, tiene errores de ortografía, usa un tono de urgencia o viene de una dirección que no es la oficial. También hay que tener cuidado con archivos adjuntos que no se esperaban y con enlaces que llevan a páginas extrañas. Antes de abrir un enlace, se puede pasar el cursor encima para ver la dirección real. Si el correo parece sospechoso, no se debe responder ni abrir. Hay que reportarlo con el botón Reportar phishing del correo y avisar al equipo de seguridad. Cada trimestre se hacen simulacros para practicar.

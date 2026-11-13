@@ -1,0 +1,3 @@
+Política de contraseñas
+
+Todas las cuentas de NovaTech deben usar contraseñas seguras. Una contraseña debe tener al menos 12 caracteres e incluir mayúsculas, minúsculas, números y símbolos. No se permite usar datos personales, como la fecha de nacimiento, ni contraseñas que ya se hayan usado antes. Las contraseñas se cambian cada 90 días. Está prohibido compartirlas por correo, chat o papel. Se recomienda usar el administrador de contraseñas que la empresa proporciona. Después de cinco intentos fallidos, la cuenta se bloquea y el colaborador debe pedir el desbloqueo al área de seguridad. Si se sospecha que una contraseña fue descubierta, se debe cambiar de inmediato.

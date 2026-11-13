@@ -1,0 +1,3 @@
+Acta de constitución del proyecto App de pedidos
+
+Proyecto: App de pedidos para Distribuidora del Norte. Objetivo: desarrollar una aplicación móvil para que los clientes de la distribuidora hagan pedidos desde su celular. Alcance: aplicación para Android y iOS, catálogo de productos, carrito y seguimiento del pedido. Fuera del alcance: pagos en línea. Duración: 5 meses, del 1 de febrero al 30 de junio. Presupuesto: 650 mil pesos. Equipo: un líder de proyecto, tres desarrolladores, una diseñadora y un tester. Riesgos iniciales: cambios en los requerimientos y retraso en la entrega de información del cliente. El patrocinador del proyecto autoriza el inicio con su firma.

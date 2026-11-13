@@ -1,0 +1,3 @@
+Reporte mensual de soporte, octubre
+
+Durante el mes se recibieron 412 tickets, 8 % más que en septiembre. El 76 % se resolvió en el primer contacto y el 93 % cumplió con el SLA. El tiempo promedio de primera respuesta fue de 47 minutos. Los temas más repetidos fueron errores al timbrar facturas (22 %), problemas de acceso (15 %) y dudas sobre el módulo de inventarios (11 %). La satisfacción de los clientes fue de 4.4 sobre 5. Se detectó que muchos tickets repetidos tenían solución en la base de conocimiento, pero los agentes no la encontraron. Se propone mejorar el buscador y actualizar los artículos.

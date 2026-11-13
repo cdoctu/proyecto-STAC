@@ -1,0 +1,3 @@
+Preguntas frecuentes sobre facturación electrónica
+
+Preguntas frecuentes sobre facturación electrónica. ¿Qué es un CFDI? Es la factura electrónica que se envía al SAT para que tenga validez. ¿Cuánto tarda en timbrarse una factura? Normalmente unos segundos, pero puede tardar más si el SAT tiene fallas. ¿Puedo corregir una factura ya timbrada? No, hay que cancelarla y hacer una nueva. ¿Dónde descargo el XML y el PDF? En el módulo Facturas, con el botón Descargar. ¿Qué hago si el RFC de mi cliente no es válido? Revisa que esté escrito sin errores y que coincida con el nombre y el código postal registrados en el SAT. Si sigues con dudas, crea un ticket.

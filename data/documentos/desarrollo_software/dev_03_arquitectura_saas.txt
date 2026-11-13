@@ -1,0 +1,3 @@
+Arquitectura de la plataforma SaaS
+
+La plataforma SaaS de NovaTech está hecha con microservicios que se comunican por medio de APIs. Hay un servicio para facturación, otro para inventarios, otro para usuarios y otro para notificaciones. Cada servicio tiene su propia base de datos en PostgreSQL. El frontend es una aplicación web en React que habla con un API Gateway, el cual manda cada petición al servicio correcto. Todo se ejecuta en contenedores Docker dentro de la nube de AWS. Las colas de mensajes permiten que los servicios trabajen sin esperar a los demás, por ejemplo cuando se manda un correo con la factura. Este diseño permite escalar solo el servicio que más se usa.

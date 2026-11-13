@@ -1,0 +1,3 @@
+Artículo de base de conocimiento: el cliente no puede iniciar sesión
+
+Síntoma: al escribir el correo y la contraseña, la plataforma muestra Usuario o contraseña incorrectos. Solución: primero confirmar que el correo esté bien escrito y que las mayúsculas estén apagadas. Después pedir al cliente que haga clic en Olvidé mi contraseña y siga las instrucciones del correo. Si no le llega, revisar la carpeta de spam y confirmar que su cuenta esté activa en el panel de administración. Si la cuenta aparece bloqueada, el agente puede desbloquearla. Si el cliente usa varias empresas, verificar que esté entrando a la correcta. Si sigue sin acceso, escalar el ticket.

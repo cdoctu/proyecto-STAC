@@ -1,0 +1,3 @@
+Guía de manejo de errores y logs
+
+Esta guía explica cómo manejar errores y registros en las aplicaciones. Cada servicio debe escribir logs en formato JSON con la fecha, el nivel y un mensaje claro. Los niveles son debug, info, warning y error. Los errores deben incluir el identificador de la petición para poder seguirla entre servicios. No se deben guardar datos personales ni contraseñas en los logs. Los logs se envían a una herramienta central donde el equipo puede buscarlos. Se configuran alertas para avisar por Slack cuando hay muchos errores en pocos minutos. Cuando una función falla, el código debe devolver un mensaje de error útil y no mostrar detalles internos al usuario.

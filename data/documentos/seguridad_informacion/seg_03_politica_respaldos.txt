@@ -1,0 +1,3 @@
+Política de respaldos de información
+
+La política de respaldos define cómo se protege la información de la empresa. Las bases de datos de producción se respaldan cada noche y los respaldos se guardan por 30 días. Cada domingo se hace un respaldo completo que se guarda por un año. Los respaldos se almacenan en dos lugares distintos: la nube y un centro de datos en otra ciudad. Todos los respaldos van cifrados. Cada mes se hace una prueba de restauración para comprobar que los datos se pueden recuperar. El resultado de la prueba se registra y se informa al responsable de seguridad. Los colaboradores deben guardar sus archivos de trabajo en la nube y no solo en su laptop.

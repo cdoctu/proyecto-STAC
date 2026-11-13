@@ -1,0 +1,3 @@
+Procedimiento para atender un ticket por posible robo de cuenta de un cliente
+
+Este procedimiento se usa cuando un cliente reporta en un ticket que alguien entró a su cuenta sin permiso o que hay facturas que él no emitió. El agente de nivel 1 marca el ticket con prioridad alta, según el SLA, y responde al cliente en máximo dos horas. Para proteger la cuenta, pide al cliente cambiar su contraseña y revisa en el panel el historial de accesos. Si se confirma un acceso no autorizado, el agente escala el ticket al equipo de seguridad y le avisa al cliente que lo contactarán. En el ticket se debe guardar toda la información: fechas, capturas y facturas dudosas. Al terminar, se envía al cliente un resumen con las recomendaciones.

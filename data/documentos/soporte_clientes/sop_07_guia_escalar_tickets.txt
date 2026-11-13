@@ -1,0 +1,3 @@
+Guía para escalar tickets a nivel 2
+
+Esta guía explica cuándo y cómo escalar un ticket al nivel 2. Un agente de nivel 1 debe escalar cuando el problema requiere revisar el sistema por dentro, cuando falla algo en la plataforma que afecta a varios clientes o cuando se está por vencer el tiempo del SLA. Antes de escalar, debe escribir en el ticket los pasos que ya probó, los datos del cliente y las capturas de pantalla. Después cambia el estado a Escalado y asigna el ticket al grupo de nivel 2. También debe avisar al cliente que su caso pasó a un especialista y darle un nuevo tiempo estimado. Si el problema es un error del sistema, nivel 2 crea una tarea para el equipo de desarrollo.

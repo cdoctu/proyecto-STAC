@@ -1,0 +1,3 @@
+Minuta de revisión del sprint 6 con el cliente
+
+Fecha: 21 de octubre. Asistentes: líder de proyecto, product owner del cliente, tres desarrolladores y la diseñadora. En la revisión del sprint 6 el equipo mostró el módulo de pedidos y el seguimiento en el mapa. De las 10 historias planeadas se terminaron 9 y quedó pendiente la de notificaciones. El cliente aprobó el diseño nuevo de la pantalla principal y pidió dos cambios menores en los colores. Acuerdos: pasar la historia pendiente al backlog del sprint 7, actualizar el burndown y agendar la retrospectiva para el miércoles. Riesgo: el cliente quiere agregar reportes nuevos, por lo que se revisará el alcance con el control de cambios.

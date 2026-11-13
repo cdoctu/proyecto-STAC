@@ -1,0 +1,3 @@
+Procedimiento para reportar la pérdida de una laptop
+
+Si un colaborador pierde su laptop o se la roban, debe avisar de inmediato al equipo de seguridad y a su jefe directo, sin esperar al día siguiente. En el reporte debe decir cuándo y dónde ocurrió y qué información tenía guardada el equipo. El equipo de seguridad bloquea la cuenta del colaborador, cambia las contraseñas y borra la información del equipo a distancia. También revisa si había datos confidenciales o de clientes para saber si fue un incidente grave. Si fue un robo, el colaborador debe levantar una denuncia ante la autoridad. Como el disco está cifrado, el riesgo de que alguien vea los datos es bajo, pero el reporte rápido es obligatorio.

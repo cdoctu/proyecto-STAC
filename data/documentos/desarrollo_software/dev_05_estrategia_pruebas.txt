@@ -1,0 +1,3 @@
+Estrategia de pruebas de software
+
+La estrategia de pruebas busca encontrar errores antes de que lleguen al cliente. Se usan tres tipos de pruebas. Las pruebas unitarias revisan funciones pequeñas y deben cubrir al menos el 80 % del código nuevo. Las pruebas de integración revisan que los servicios funcionen bien juntos, por ejemplo que una factura creada actualice el inventario. Las pruebas de extremo a extremo simulan lo que hace un usuario en la aplicación. Todas se ejecutan de forma automática en el pipeline. Antes de cada versión, el equipo de calidad hace pruebas manuales de las funciones más importantes. Los errores que se encuentren se registran con los pasos para repetirlos.

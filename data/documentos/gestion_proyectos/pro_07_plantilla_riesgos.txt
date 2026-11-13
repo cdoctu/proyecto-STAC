@@ -1,0 +1,3 @@
+Plantilla de gestión de riesgos del proyecto
+
+Para cada riesgo se llena una fila con los siguientes datos: número, descripción, causa, probabilidad (baja, media o alta), impacto (bajo, medio o alto), nivel de riesgo, plan de respuesta, responsable y estado. Ejemplo: Riesgo 3, el cliente tarda en entregar la información, probabilidad alta e impacto medio. Plan de respuesta: pedir la información desde la primera semana y avisar al patrocinador si hay retraso. Responsable: líder de proyecto. Los riesgos se revisan cada semana en la reunión del equipo. Cuando un riesgo ocurre se convierte en un problema y se registra en la bitácora del proyecto.

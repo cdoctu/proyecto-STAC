@@ -1,0 +1,3 @@
+Lecciones aprendidas del proyecto de app móvil de logística
+
+Lo que salió bien: las reuniones diarias evitaron bloqueos y la revisión de cada sprint con el cliente evitó sorpresas al final. Lo que salió mal: no se definieron bien los requerimientos al inicio y hubo muchos cambios en los últimos sprints. También se subestimó el tiempo de las pruebas en distintos teléfonos. Recomendaciones: hacer talleres de requerimientos antes de empezar, dejar un margen de 15 % en el cronograma para imprevistos y empezar las pruebas desde el primer sprint. Este documento se guarda en el repositorio de lecciones aprendidas para consultarlo al iniciar nuevos proyectos.

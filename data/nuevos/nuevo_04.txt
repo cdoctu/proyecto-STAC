@@ -1,0 +1,3 @@
+Artículo de base de conocimiento: no puedo descargar el XML de una factura
+
+Síntoma: el cliente hace clic en Descargar XML y no pasa nada, o aparece un archivo vacío. Causa más común: el navegador bloquea las descargas o la factura todavía no está timbrada. Solución: primero revisar en el módulo Facturas que el estado sea Timbrada. Si lo está, pedir al cliente que pruebe en una ventana de incógnito o con otro navegador, y que permita las descargas del sitio. Si el archivo sigue vacío, se le pide su folio fiscal y el agente genera el XML desde el panel de administración y se lo envía por el ticket. Si pasa con varias facturas del mismo cliente, escalar el ticket a nivel 2.

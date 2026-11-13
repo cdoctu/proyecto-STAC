@@ -1,0 +1,3 @@
+Guía de desarrollo de aplicaciones móviles
+
+La guía de desarrollo móvil explica cómo se construyen las aplicaciones para clientes. Usamos React Native para tener una sola base de código para Android y iOS. La aplicación se organiza en pantallas, componentes y servicios que se conectan con la API. Se debe cuidar que la app funcione sin internet por un tiempo, guardando datos en el teléfono y sincronizando después. Antes de publicar se prueba en al menos tres modelos de teléfono y en las dos últimas versiones del sistema operativo. Las versiones se suben a las tiendas de Apple y Google con ayuda del pipeline. Cada versión lleva un número, por ejemplo 2.4.1.

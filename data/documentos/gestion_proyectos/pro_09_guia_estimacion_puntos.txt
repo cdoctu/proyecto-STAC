@@ -1,0 +1,3 @@
+Guía de estimación con puntos de historia
+
+Los puntos de historia sirven para medir qué tan grande es una historia de usuario, tomando en cuenta el esfuerzo, la complejidad y la incertidumbre, no las horas. Usamos la serie 1, 2, 3, 5, 8 y 13. Una historia de 1 punto es muy simple, como cambiar un texto. Una de 8 es grande y conviene dividirla. La estimación se hace en equipo con la técnica de planning poker: cada persona elige una carta en secreto y, al mostrarlas, si hay mucha diferencia se platica por qué. Con el tiempo se calcula la velocidad del equipo, es decir, cuántos puntos termina por sprint, y así se planea mejor el cronograma.

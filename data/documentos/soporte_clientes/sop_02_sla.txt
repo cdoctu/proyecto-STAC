@@ -1,0 +1,3 @@
+Acuerdo de nivel de servicio (SLA)
+
+El acuerdo de nivel de servicio, o SLA, define los tiempos de atención para los clientes de NovaTech. Los tickets tienen cuatro prioridades. Para prioridad crítica, cuando la plataforma no funciona para nadie, la primera respuesta es en 30 minutos y la solución en 4 horas. Para prioridad alta, la respuesta es en 2 horas y la solución en 8 horas. Para prioridad media, respuesta en 4 horas y solución en 2 días. Para prioridad baja, respuesta en 1 día y solución en 5 días. Los tiempos se cuentan en horario de atención, de lunes a viernes de 8 a 19 horas, salvo los tickets críticos, que se atienden las 24 horas. Cada mes se reporta el porcentaje de tickets que cumplieron el SLA.

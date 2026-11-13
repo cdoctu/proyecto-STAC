@@ -1,0 +1,3 @@
+Manual de despliegue CI/CD
+
+Este manual explica cómo se publica una nueva versión en producción. Cuando un desarrollador sube cambios a la rama main, el pipeline de CI/CD se activa solo. Primero se instalan las dependencias y se corren las pruebas unitarias. Si pasan, se construye la imagen de Docker y se sube al registro. Después se despliega en el ambiente de staging, donde se corren pruebas de integración. Para pasar a producción, el líder técnico debe aprobar el despliegue en la herramienta. Si algo falla, se puede regresar a la versión anterior con el comando de rollback. Los despliegues se hacen en horarios de poco uso, de preferencia martes o miércoles.

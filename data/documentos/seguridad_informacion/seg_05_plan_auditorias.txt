@@ -1,0 +1,3 @@
+Plan de auditorías internas de seguridad
+
+El plan de auditorías internas revisa si la empresa cumple con sus políticas de seguridad y con las normas que la afectan. Se hacen dos auditorías al año, una en cada semestre. El auditor revisa evidencias, como registros de acceso, respaldos y capacitaciones, y también entrevista a los responsables. Al final entrega un informe con los hallazgos, que pueden ser graves, moderados o menores. Cada hallazgo tiene un responsable y una fecha límite para corregirlo. El equipo de seguridad da seguimiento hasta que todos se cierren. Los resultados se presentan a la dirección y sirven para actualizar las políticas y preparar auditorías externas.

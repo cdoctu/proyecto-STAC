@@ -1,0 +1,3 @@
+Manual de usuario: cómo emitir y timbrar una factura
+
+Manual de usuario: cómo emitir y timbrar una factura. Paso 1: entra a la plataforma y elige el módulo Facturas. Paso 2: haz clic en Nueva factura. Paso 3: escribe el RFC del cliente o selecciónalo de la lista. Paso 4: agrega los productos o servicios con su cantidad y precio. El sistema calcula el IVA automáticamente. Paso 5: revisa los datos y elige la forma de pago. Paso 6: haz clic en Timbrar. Cuando aparezca el mensaje de éxito, la factura queda guardada con su folio fiscal. Paso 7: descarga el PDF y el XML, o envíalos al cliente por correo desde el mismo botón.

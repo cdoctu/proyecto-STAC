@@ -1,0 +1,3 @@
+Estándares de código en Python y JavaScript
+
+Los estándares de código ayudan a que todo el equipo escriba de forma parecida. En Python seguimos la guía PEP 8 y en JavaScript usamos ESLint con las reglas del equipo. Los nombres de variables y funciones deben ser claros, por ejemplo calcular_total_factura y no ctf. Cada función debe hacer una sola cosa y no pasar de 40 líneas. Los comentarios explican por qué se hizo algo, no lo que ya se ve en el código. No se deben dejar contraseñas ni llaves dentro del código. Antes de subir cambios al repositorio, el desarrollador corre el formateador automático y la revisión de estilo.

@@ -1,0 +1,3 @@
+Política de control de accesos y permisos
+
+El control de accesos sigue el principio de mínimo privilegio, es decir, cada persona solo tiene los permisos que necesita para su trabajo. Cuando entra un colaborador, su jefe directo solicita los accesos por medio de un formulario y el área de seguridad los aprueba. Los permisos se asignan por roles, como desarrollador, soporte o administrador. Los accesos a producción y a las bases de datos de clientes son más restringidos y se registran. Cada tres meses se revisan los permisos para quitar los que ya no se necesitan. Cuando alguien cambia de puesto o deja la empresa, sus accesos se cancelan el mismo día.

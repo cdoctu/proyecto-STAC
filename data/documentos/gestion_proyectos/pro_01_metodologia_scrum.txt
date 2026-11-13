@@ -1,0 +1,3 @@
+Metodología Scrum en NovaTech
+
+NovaTech usa Scrum para trabajar en sus proyectos de software. El trabajo se divide en sprints de dos semanas. El product owner mantiene el backlog con las historias de usuario ordenadas por prioridad. Al inicio de cada sprint, el equipo hace la planeación y decide qué historias puede terminar. Todos los días hay una reunión corta de 15 minutos, llamada daily, donde cada persona dice qué hizo, qué hará y si tiene bloqueos. Al final del sprint se hace una revisión con el cliente para mostrar los avances y una retrospectiva para mejorar la forma de trabajar. El scrum master ayuda a que el equipo siga el proceso y quita obstáculos.

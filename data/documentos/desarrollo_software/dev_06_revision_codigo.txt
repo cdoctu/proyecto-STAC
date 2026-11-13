@@ -1,0 +1,3 @@
+Guía de revisión de código
+
+Todo cambio de código debe pasar por una revisión antes de unirse a la rama principal. El desarrollador crea un pull request con una descripción clara de lo que cambió y por qué. Al menos un compañero revisa el código y puede dejar comentarios. Se revisa que el código siga los estándares, que tenga pruebas y que no rompa otras partes del sistema. El revisor debe responder en un máximo de un día hábil. Los comentarios deben ser respetuosos y enfocados en el código, no en la persona. Cuando todo está bien, el revisor aprueba y el autor hace el merge. Los pull requests muy grandes se dividen en partes más pequeñas.

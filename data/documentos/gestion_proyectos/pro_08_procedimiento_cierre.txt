@@ -1,0 +1,3 @@
+Procedimiento de cierre de proyecto
+
+Cuando se entrega el último producto, el líder de proyecto confirma con el cliente que se cumplieron todos los entregables y pide la firma del acta de aceptación. Después revisa que no queden pagos pendientes ni tareas abiertas. El código, los manuales y los documentos del proyecto se guardan en el repositorio y se entregan al cliente. Se hace una reunión final con el equipo para comentar el resultado y se escriben las lecciones aprendidas. También se compara el presupuesto y el tiempo reales contra lo planeado. Por último, se libera al equipo para que pase a otros proyectos y se archiva el expediente.

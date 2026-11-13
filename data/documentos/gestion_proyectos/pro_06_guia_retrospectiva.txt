@@ -1,0 +1,3 @@
+Guía para hacer la retrospectiva del sprint
+
+La retrospectiva se hace al terminar cada sprint, dura entre 45 y 60 minutos y participa todo el equipo. El scrum master dirige la reunión. Se usan tres columnas en un tablero: qué hicimos bien, qué podemos mejorar y qué vamos a probar. Cada persona escribe sus notas y después se agrupan las ideas parecidas. El equipo vota los temas más importantes y se platica de ellos. Al final se eligen máximo tres acciones de mejora, cada una con un responsable. Las acciones se revisan al inicio de la siguiente retrospectiva. Es importante que el ambiente sea de confianza y sin culpas.

@@ -1,0 +1,3 @@
+Artículo de base de conocimiento: error al timbrar la factura
+
+Síntoma: al hacer clic en Timbrar aparece el mensaje Certificado vencido. Causa: el certificado de sello digital de la empresa del cliente tiene una fecha de vigencia que ya pasó. Solución: pedir al cliente que renueve su certificado en la página del SAT y lo cargue de nuevo en Configuración, sección Certificados. Después debe intentar timbrar otra vez. Si el mensaje continúa, confirmar que el archivo .key y la contraseña son los correctos. Este problema es muy común a inicio de año. Si no se resuelve en una hora, escalar el ticket a nivel 2.

@@ -1,0 +1,7 @@
+archivo,categoria_esperada,nota
+nuevo_01.txt,recursos_humanos,
+nuevo_02.txt,desarrollo_software,
+nuevo_03.txt,seguridad_informacion,"Comparte palabras con recursos_humanos (colaborador, laptop, jefe directo)"
+nuevo_04.txt,soporte_clientes,
+nuevo_05.txt,gestion_proyectos,
+nuevo_06.txt,soporte_clientes,Caso difícil: mezcla soporte y seguridad_informacion; sirve para analizar un error de clasificación

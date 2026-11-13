@@ -1,0 +1,3 @@
+Plan de continuidad del negocio
+
+El plan de continuidad del negocio define cómo sigue funcionando NovaTech cuando ocurre una falla grave, como un corte de energía, un ataque o la caída de la nube. Se identifican los servicios más importantes, como la plataforma de facturación, y se define cuánto tiempo pueden estar sin funcionar. Para la plataforma, el objetivo es recuperarla en máximo cuatro horas. Se cuenta con servidores de respaldo en otra región y una lista de contactos de emergencia. El plan se prueba una vez al año con un simulacro. Después se revisan los resultados y se mejora el plan. Todos los jefes de área deben conocer qué les toca hacer.

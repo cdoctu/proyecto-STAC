@@ -1,0 +1,3 @@
+Documentación de la API de facturación
+
+La API de facturación permite que otros sistemas de los clientes creen y consulten facturas electrónicas. Todas las peticiones usan HTTPS y devuelven datos en formato JSON. El endpoint POST /api/v2/facturas crea una factura nueva y recibe el RFC del cliente, los conceptos y los impuestos. El endpoint GET /api/v2/facturas/{id} devuelve el estado de la factura. Para usar la API se necesita un token de autenticación que se envía en el encabezado Authorization. La API devuelve el código 400 cuando faltan datos y 401 cuando el token no es válido. Cada cliente puede hacer hasta 100 peticiones por minuto.

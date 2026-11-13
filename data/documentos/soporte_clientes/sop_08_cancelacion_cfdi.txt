@@ -1,0 +1,3 @@
+Procedimiento para cancelar una factura CFDI
+
+Un cliente puede pedir ayuda cuando se equivocó en una factura ya timbrada. El agente debe confirmar quién es el cliente y pedir el folio fiscal de la factura. Después explica que, para cancelar, se debe indicar un motivo, por ejemplo, error en los datos. Si la factura tiene más de 24 horas, el receptor debe aceptar la cancelación en su buzón del SAT. El agente entra al módulo Facturas, busca el folio, elige Cancelar y selecciona el motivo. Al final guarda el acuse de cancelación en el ticket y le avisa al cliente que ya puede emitir la factura correcta.

@@ -1,0 +1,3 @@
+Procedimiento de atención de tickets
+
+Este procedimiento explica cómo se atienden los tickets de los clientes. Un cliente puede crear un ticket por correo, por el portal de ayuda o por chat. El agente de nivel 1 revisa el ticket, le asigna una prioridad y le responde al cliente que ya fue recibido. Primero busca la solución en la base de conocimiento. Si no la encuentra, pide más datos al cliente, como capturas de pantalla o el número de factura. Cuando el problema se resuelve, el agente escribe la solución en el ticket y pide la confirmación del cliente. El ticket se cierra después de dos días sin respuesta. Los tickets repetidos se unen en uno solo.
