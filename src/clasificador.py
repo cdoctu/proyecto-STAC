@@ -1,10 +1,16 @@
+from pathlib import Path
+
+import joblib
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 import matplotlib.pyplot as plt
+
+RUTA_MODELO = Path(__file__).resolve().parent.parent / "models" / "clasificador.joblib"
+
 
 def dividir_datos(
 	df: pd.DataFrame,
@@ -17,6 +23,42 @@ def dividir_datos(
 		random_state=random_state,
 		stratify=df["categoria"],
 	)
+
+
+def crear_pipeline() -> Pipeline:
+	return Pipeline([
+		("tfidf", TfidfVectorizer()),
+		("classifier", MultinomialNB()),
+	])
+
+
+def guardar_modelo(modelo: Pipeline, ruta: Path = RUTA_MODELO) -> Path:
+	ruta.parent.mkdir(parents=True, exist_ok=True)
+	joblib.dump(modelo, ruta)
+	print(f"\nModelo guardado en: {ruta}")
+	return ruta
+
+
+def cargar_modelo(ruta: Path = RUTA_MODELO) -> Pipeline:
+	return joblib.load(ruta)
+
+
+def evaluar_validacion_cruzada(
+	df_train: pd.DataFrame,
+	cv: int = 3,
+) -> None:
+	pipeline = crear_pipeline()
+	puntuaciones = cross_val_score(
+		pipeline,
+		df_train["texto_limpio"],
+		df_train["categoria"],
+		cv=cv,
+		scoring="accuracy",
+	)
+
+	print(f"\nValidación cruzada ({cv} folds):")
+	print("Exactitud por fold:", [f"{puntuacion:.2%}" for puntuacion in puntuaciones])
+	print(f"Promedio: {puntuaciones.mean():.2%} (+/- {puntuaciones.std():.2%})")
 
 
 def mostrar_resultados(nombre: str, df_test: pd.DataFrame, y_pred) -> None:
@@ -74,12 +116,35 @@ def vectorizar_y_entrenar(
 	df_test: pd.DataFrame,
 	nombre: str = "Naive Bayes",
 ) -> Pipeline:
-	pipeline = Pipeline([
-		("tfidf", TfidfVectorizer()),
-		("classifier", MultinomialNB()),
-	])
+	pipeline = crear_pipeline()
 
 	pipeline.fit(df_train["texto_limpio"], df_train["categoria"])
 	y_pred = pipeline.predict(df_test["texto_limpio"])
 	mostrar_resultados(nombre, df_test, y_pred)
 	return pipeline
+
+
+def clasificar_nuevos(
+	modelo: Pipeline,
+	df_nuevos: pd.DataFrame,
+) -> pd.DataFrame:
+	if df_nuevos.empty:
+		print("\nNo hay archivos nuevos para clasificar.")
+		return pd.DataFrame(
+			columns=["archivo", "categoria_predicha", "confianza"]
+		)
+
+	textos = df_nuevos["texto_limpio"]
+	resultado = pd.DataFrame({
+		"archivo": df_nuevos["archivo"].to_numpy(),
+		"categoria_predicha": modelo.predict(textos),
+		"confianza": modelo.predict_proba(textos).max(axis=1),
+	})
+
+	resultado_impreso = resultado.copy()
+	resultado_impreso["confianza"] = resultado_impreso["confianza"].map(
+		lambda confianza: f"{confianza:.2%}"
+	)
+	print("\nClasificación de documentos nuevos:")
+	print(resultado_impreso.to_string(index=False))
+	return resultado

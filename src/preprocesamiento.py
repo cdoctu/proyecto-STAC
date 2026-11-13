@@ -34,14 +34,27 @@ def limpiar_texto(texto: str) -> str:
 
 #Carga de Documentos
 def cargar_textos() -> pd.DataFrame:
-	directorio_data = Path(__file__).resolve().parent.parent / "data"
+	directorio_documentos = Path(__file__).resolve().parent.parent / "data" / "documentos"
 	registros = [
 		{
 			"texto": archivo.read_text(encoding="utf-8"),
 			"categoria": archivo.parent.name,
 		}
-		for archivo in sorted(directorio_data.rglob("*.txt"))
+		for archivo in sorted(directorio_documentos.rglob("*.txt"))
 	]
 
 	return pd.DataFrame(registros, columns=["texto", "categoria"])
+
+
+def cargar_nuevos() -> pd.DataFrame:
+	directorio_nuevos = Path(__file__).resolve().parent.parent / "data" / "nuevos"
+	registros = [
+		{
+			"archivo": archivo.name,
+			"texto": archivo.read_text(encoding="utf-8"),
+		}
+		for archivo in sorted(directorio_nuevos.glob("*.txt"))
+	]
+
+	return pd.DataFrame(registros, columns=["archivo", "texto"])
 
