@@ -2,8 +2,9 @@ import pandas as pd
 from pathlib import Path
 import re
 import unicodedata
+from sklearn.model_selection import train_test_split
 
-
+#Limpieza de texto y stopwords en español
 STOPWORDS_ES = {
 	"a", "al", "algo", "algunas", "algunos", "ante", "antes", "como",
 	"con", "contra", "cual", "cuando", "de", "del", "desde", "donde",
@@ -32,7 +33,7 @@ def limpiar_texto(texto: str) -> str:
 	tokens = re.sub(r"[^a-zñ\s]", " ", texto_sin_acentos).split()
 	return " ".join(token for token in tokens if token not in STOPWORDS_ES)
 
-
+#Carga de Documentos
 def cargar_textos() -> pd.DataFrame:
 	directorio_data = Path(__file__).resolve().parent.parent / "data"
 	registros = [
@@ -45,10 +46,20 @@ def cargar_textos() -> pd.DataFrame:
 
 	return pd.DataFrame(registros, columns=["texto", "categoria"])
 
+#División de datos para entrenamiento y prueba
+def dividir_datos(df: pd.DataFrame, test_size: float = 0.3, random_state: int = 42):
+    return train_test_split(df, test_size=test_size, random_state=random_state, stratify=df["categoria"])
+
+#Flujo principal
 df = cargar_textos()
 print("Carga de Documentos:")
 print(df.head(10))
 df["texto_limpio"] = df["texto"].apply(limpiar_texto)
-print("Textos Limpios:")
+print("\nTextos Limpios:")
 print(df[["texto_limpio", "categoria"]].head(10))
+df_train, df_test = dividir_datos(df)
+print("\nDatos de Entrenamiento:")
+print(df_train.head(10))   
+print("\nDatos de Prueba:")
+print(df_test.head(10))   
 
