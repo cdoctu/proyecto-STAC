@@ -1,0 +1,8 @@
+consulta,esperado,primero_sin_raiz,similitud_sin_raiz,acierto_sin_raiz,primero_con_raiz,similitud_con_raiz,acierto_con_raiz
+¿Cuántos días de vacaciones me tocan y cómo los pido?,rh_01_politica_vacaciones,rh_01_politica_vacaciones,0.1557,True,rh_01_politica_vacaciones,0.1436,True
+¿Cómo publico una nueva versión en producción?,dev_04_manual_despliegue_cicd,dev_04_manual_despliegue_cicd,0.2228,True,dev_04_manual_despliegue_cicd,0.2484,True
+¿Cómo reporto un correo sospechoso?,seg_06_guia_phishing,seg_06_guia_phishing,0.1391,True,seg_06_guia_phishing,0.2632,True
+¿Cómo se atiende un ticket de un cliente?,sop_01_procedimiento_tickets,sop_01_procedimiento_tickets,0.2138,True,sop_01_procedimiento_tickets,0.228,True
+¿Cómo se hace una retrospectiva de sprint?,pro_06_guia_retrospectiva,pro_06_guia_retrospectiva,0.2464,True,pro_06_guia_retrospectiva,0.2471,True
+El cliente no puede entrar a su cuenta,sop_09_kb_no_puedo_entrar,sop_09_kb_no_puedo_entrar,0.1889,True,sop_09_kb_no_puedo_entrar,0.18,True
+¿Qué hago si pierdo mi computadora de trabajo?,seg_07_politica_dispositivos,sop_03_faq_facturacion_cfdi,0.0833,False,sop_03_faq_facturacion_cfdi,0.0758,False
