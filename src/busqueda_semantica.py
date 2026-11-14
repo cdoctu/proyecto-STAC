@@ -18,18 +18,16 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Se agrega la carpeta principal al path para poder importar "src.preprocesamiento"
-# aunque el script se corra como "python src/busqueda_semantica.py".
+# Se agrega la carpeta principal al path para poder importar "src.preprocesamiento" aunque el script se corra como "python src/busqueda_semantica.py".
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE))
 
-from src.preprocesamiento import limpiar_texto  # noqa: E402  (la misma limpieza del clasificador)
+from src.preprocesamiento import limpiar_texto 
 
 CARPETA_DOCS = BASE / "data" / "documentos"
 CARPETA_RESULTADOS = BASE / "resultados"
 
-# Consultas de prueba: (pregunta, id del documento que esperamos en el primer lugar).
-# El id es el nombre del archivo sin .txt. Cámbialas si tus documentos se llaman distinto.
+# Consultas de prueba
 PRUEBAS = [
     ("¿Cuántos días de vacaciones me tocan y cómo los pido?", "rh_01_politica_vacaciones"),
     ("¿Cómo publico una nueva versión en producción?", "dev_04_manual_despliegue_cicd"),
@@ -41,9 +39,8 @@ PRUEBAS = [
 ]
 
 
-# ---------------------------------------------------------------------------
-# Limpieza (igual que en el clasificador) y reducción opcional a la raíz
-# ---------------------------------------------------------------------------
+
+# Limpieza y reducción opcional a la raíz
 def reducir_a_raiz(palabra):
     """Quita el plural y la última vocal: correo / correos -> corr."""
     if len(palabra) > 4 and palabra.endswith("es"):
@@ -62,17 +59,16 @@ def limpiar(texto, usar_raiz=False):
     return texto_limpio
 
 
-# ---------------------------------------------------------------------------
-# 1. Indexar: limpiar todos los documentos y aplicar fit_transform
-# ---------------------------------------------------------------------------
+
+# indexa, limpia todos los documentos y aplicacion de fit_transform
 def cargar_documentos():
     filas = []
     for archivo in sorted(CARPETA_DOCS.rglob("*.txt")):
         texto = archivo.read_text(encoding="utf-8")
         filas.append({
             "id": archivo.stem,
-            "titulo": texto.splitlines()[0],        # la primera línea es el título
-            "categoria": archivo.parent.name,       # la categoría es el nombre de la carpeta
+            "titulo": texto.splitlines()[0],       
+            "categoria": archivo.parent.name,     
             "texto": texto,
         })
     return pd.DataFrame(filas)
@@ -83,21 +79,19 @@ def crear_indice(usar_raiz=False):
     df["texto_limpio"] = df["texto"].apply(lambda t: limpiar(t, usar_raiz))
 
     vectorizador = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)
-    matriz = vectorizador.fit_transform(df["texto_limpio"])  # matriz documentos x términos
+    matriz = vectorizador.fit_transform(df["texto_limpio"]) 
     return df, vectorizador, matriz
 
 
-# ---------------------------------------------------------------------------
-# 3, 4 y 5. Vectorizar la consulta, comparar y ordenar
-# ---------------------------------------------------------------------------
+# Vectorizar la consulta, comparar y ordenar
 def buscar(consulta, indice, k=3, usar_raiz=False):
     df, vectorizador, matriz = indice
 
-    consulta_limpia = limpiar(consulta, usar_raiz)               # misma limpieza que los documentos
-    vector_consulta = vectorizador.transform([consulta_limpia])  # transform, NO fit_transform
+    consulta_limpia = limpiar(consulta, usar_raiz)              
+    vector_consulta = vectorizador.transform([consulta_limpia])  
 
-    similitudes = cosine_similarity(vector_consulta, matriz).flatten()  # un valor por documento
-    orden = np.argsort(similitudes)[::-1][:k]                           # los k más parecidos
+    similitudes = cosine_similarity(vector_consulta, matriz).flatten()  # valor por documento
+    orden = np.argsort(similitudes)[::-1][:k]                           # k = mas parecidos
 
     resultado = pd.DataFrame({
         "posicion": range(1, len(orden) + 1),
@@ -118,9 +112,7 @@ def mostrar(consulta, resultado):
         print(resultado.to_string(index=False))
 
 
-# ---------------------------------------------------------------------------
-# 6. Probar con varias consultas (sin raíz y con raíz)
-# ---------------------------------------------------------------------------
+# Prueba para varias consultas
 def probar(k=3):
     indice_normal = crear_indice(usar_raiz=False)
     indice_raiz = crear_indice(usar_raiz=True)
@@ -166,9 +158,7 @@ def probar(k=3):
     print(f"Tabla guardada en: {CARPETA_RESULTADOS / 'consultas_prueba.csv'}")
 
 
-# ---------------------------------------------------------------------------
-# 2. Recibir la consulta (línea de comandos o modo interactivo)
-# ---------------------------------------------------------------------------
+# Recibir la consulta 
 def main():
     parser = argparse.ArgumentParser(description="Búsqueda semántica en los documentos de NovaTech")
     parser.add_argument("consulta", nargs="*", help="pregunta en lenguaje natural")
