@@ -1,0 +1,21 @@
+{
+  "invitado": [
+    {
+      "tipo": "consulta",
+      "valor": "como cambio mi contraseña?",
+      "fecha": "2026-11-24 13:53"
+    }
+  ],
+  "al": [
+    {
+      "tipo": "consulta",
+      "valor": "contraseña",
+      "fecha": "2026-11-24 13:53"
+    },
+    {
+      "tipo": "consulta",
+      "valor": "manual",
+      "fecha": "2026-11-24 13:54"
+    }
+  ]
+}

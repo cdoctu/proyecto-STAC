@@ -7,6 +7,7 @@ from src.clasificador import (
 	vectorizar_y_entrenar,
 )
 from src.preprocesamiento import cargar_nuevos, cargar_textos, limpiar_texto
+from src.recomendador import menu_recomendador
 
 
 def ejecutar_clasificador() -> None:
@@ -34,6 +35,10 @@ def ejecutar_buscador() -> None:
 	menu_busqueda(desde_main=True)
 
 
+def ejecutar_recomendador() -> None:
+	menu_recomendador()
+
+
 def main() -> None:
 	try:
 		while True:
@@ -42,7 +47,8 @@ def main() -> None:
 			print("=" * 58)
 			print("  1. Clasificador de documentos")
 			print("  2. Buscador de documentos (búsqueda semántica)")
-			print("  3. Ejecutar todo (clasificador y luego buscador)")
+			print("  3. Recomendador de documentos")
+			print("  4. Ejecutar todo (clasificador, buscador y recomendador)")
 			print("  0. Salir")
 			opcion = input("\nElige una opción: ").strip()
 
@@ -51,8 +57,11 @@ def main() -> None:
 			elif opcion == "2":
 				ejecutar_buscador()
 			elif opcion == "3":
+				ejecutar_recomendador()
+			elif opcion == "4":
 				ejecutar_clasificador()
 				ejecutar_buscador()
+				ejecutar_recomendador()
 			elif opcion == "0":
 				break
 			else:
