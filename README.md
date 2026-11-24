@@ -1,9 +1,11 @@
 # Proyecto STAC · NovaTech Soluciones
 
-Programa en Python para trabajar con los documentos internos de NovaTech Soluciones. Incluye dos herramientas:
+Programa en Python para trabajar con los documentos internos de NovaTech Soluciones. Incluye estas herramientas:
 
 1. **Clasificador de documentos**: entrena un modelo (TF-IDF + Naive Bayes) que asigna cada documento a un área de la empresa.
 2. **Buscador de documentos (búsqueda semántica)**: permite hacer preguntas en lenguaje natural y devuelve los documentos más parecidos, usando TF-IDF y similitud coseno.
+3. **Recomendador de documentos**: sugiere documentos relacionados con la búsqueda y el historial de la persona.
+4. **Chatbot de documentos**: busca fragmentos relevantes en los documentos de todas las áreas y muestra su fuente.
 
 ---
 
@@ -42,7 +44,9 @@ proyecto/
 ├── src/
 │   ├── preprocesamiento.py        # Limpieza de texto y carga de documentos
 │   ├── clasificador.py            # Entrenamiento, evaluación y clasificación
-│   └── busqueda_semantica.py      # Buscador de documentos
+│   ├── busqueda_semantica.py      # Buscador de documentos
+│   ├── recomendador.py            # Recomendaciones basadas en contenido e historial
+│   └── chatbot.py                 # Chat sobre los documentos con fuentes
 ├── data/
 │   ├── documentos/                # Documentos de entrenamiento / búsqueda
 │   │   ├── recursos_humanos/
@@ -87,7 +91,9 @@ Se mostrará el menú principal:
 ==========================================================
   1. Clasificador de documentos
   2. Buscador de documentos (búsqueda semántica)
-  3. Ejecutar todo (clasificador y luego buscador)
+  3. Recomendador de documentos
+  4. Chatbot de documentos
+  5. Ejecutar todo (clasificador, buscador y recomendador)
   0. Salir
 ```
 
@@ -134,6 +140,12 @@ Al elegir la opción **2**, se abre el menú del buscador:
 
 > **Tip:** el buscador compara palabras, no significados. Si no hay resultados, prueba con otras palabras o con una sola palabra clave.
 
+## Cómo usar el chatbot (opción 4)
+
+Al elegir la opción **4**, el chatbot carga los archivos `.txt` de todas las subcarpetas de `data/documentos/` y crea el índice una vez para esa sesión. Escribe una pregunta; mostrará el fragmento más relevante y el documento fuente. Escribe `salir` para volver al menú principal.
+
+El chatbot usa TF-IDF para recuperar texto; no genera respuestas nuevas ni garantiza reconocer sinónimos.
+
 ### Uso desde la línea de comandos
 
 El buscador también se puede ejecutar de forma independiente, sin pasar por `main.py`:
@@ -174,9 +186,9 @@ python src/busqueda_semantica.py --probar
 
 ---
 
-## Opción 3: ejecutar todo
+## Opción 5: ejecutar todo
 
-Ejecuta primero el clasificador (opción 1) y, al terminar, abre el buscador (opción 2). Al salir del buscador se regresa al menú principal.
+Ejecuta el clasificador (opción 1), el buscador (opción 2) y el recomendador (opción 3), en ese orden. El chatbot se inicia por separado desde la opción 4.
 
 ---
 
@@ -185,6 +197,7 @@ Ejecuta primero el clasificador (opción 1) y, al terminar, abre el buscador (op
 - **Preprocesamiento** (`preprocesamiento.py`): normaliza el texto, elimina acentos (conservando la ñ), signos de puntuación, números y una lista de *stopwords* en español.
 - **Clasificador** (`clasificador.py`): `Pipeline` de scikit-learn con `TfidfVectorizer` y `MultinomialNB`. El modelo se guarda y se puede recargar con `joblib`.
 - **Buscador** (`busqueda_semantica.py`): indexa todos los documentos con `TfidfVectorizer` (unigramas y bigramas, `sublinear_tf=True`), convierte la consulta al mismo espacio vectorial y ordena los documentos por **similitud coseno**. Opcionalmente reduce las palabras a su raíz mediante una regla sencilla (quita el plural y la última vocal).
+- **Chatbot** (`chatbot.py`): fragmenta los documentos, crea un índice TF-IDF al iniciar la sesión y devuelve el fragmento más similar con su fuente.
 
 ---
 

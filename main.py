@@ -1,3 +1,4 @@
+from src.chatbot import iniciar_chatbot
 from src.busqueda_semantica import menu as menu_busqueda
 from src.clasificador import (
 	dividir_datos,
@@ -39,6 +40,10 @@ def ejecutar_recomendador() -> None:
 	menu_recomendador()
 
 
+def ejecutar_chatbot() -> None:
+	iniciar_chatbot()
+
+
 def main() -> None:
 	try:
 		while True:
@@ -48,7 +53,8 @@ def main() -> None:
 			print("  1. Clasificador de documentos")
 			print("  2. Buscador de documentos (búsqueda semántica)")
 			print("  3. Recomendador de documentos")
-			print("  4. Ejecutar todo (clasificador, buscador y recomendador)")
+			print("  4. Chatbot de documentos")
+			print("  5. Ejecutar todo (clasificador, buscador y recomendador)")
 			print("  0. Salir")
 			opcion = input("\nElige una opción: ").strip()
 
@@ -59,6 +65,8 @@ def main() -> None:
 			elif opcion == "3":
 				ejecutar_recomendador()
 			elif opcion == "4":
+				ejecutar_chatbot()
+			elif opcion == "5":
 				ejecutar_clasificador()
 				ejecutar_buscador()
 				ejecutar_recomendador()

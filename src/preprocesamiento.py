@@ -19,6 +19,14 @@ STOPWORDS_ES = {
 	"una", "uno", "unos", "vosotros", "y", "ya",
 }
 
+def fragmentar_texto(texto: str, tamanio_chunk: int = 500, solapamiento: int = 50) -> list:
+	"""Fragmenta un texto en trozos de tamaño especificado con solapamiento."""
+	fragmentos = []
+	for i in range(0, len(texto), tamanio_chunk - solapamiento):
+		fragmento = texto[i:i + tamanio_chunk]
+		if fragmento:
+			fragmentos.append(fragmento)
+	return fragmentos
 
 def limpiar_texto(texto: str) -> str:
 	"""Normaliza un texto y elimina signos, numeros y stopwords en espanol."""
@@ -35,15 +43,24 @@ def limpiar_texto(texto: str) -> str:
 #Carga de Documentos
 def cargar_textos() -> pd.DataFrame:
 	directorio_documentos = Path(__file__).resolve().parent.parent / "data" / "documentos"
-	registros = [
-		{
-			"texto": archivo.read_text(encoding="utf-8"),
+	registros = []
+	for archivo in sorted(directorio_documentos.rglob("*.txt")):
+		texto = archivo.read_text(encoding="utf-8")
+		titulo = next(
+			(linea.strip() for linea in texto.splitlines() if linea.strip()),
+			archivo.stem,
+		)
+		registros.append({
+			"texto": texto,
 			"categoria": archivo.parent.name,
-		}
-		for archivo in sorted(directorio_documentos.rglob("*.txt"))
-	]
+			"titulo": titulo,
+			"archivo": archivo.relative_to(directorio_documentos).as_posix(),
+		})
 
-	return pd.DataFrame(registros, columns=["texto", "categoria"])
+	return pd.DataFrame(
+		registros,
+		columns=["texto", "categoria", "titulo", "archivo"],
+	)
 
 
 def cargar_nuevos() -> pd.DataFrame:
