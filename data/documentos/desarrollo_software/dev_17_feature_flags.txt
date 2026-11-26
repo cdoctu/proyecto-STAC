@@ -1,0 +1,3 @@
+Guía de uso de feature flags
+
+Un feature flag es un interruptor que permite encender o apagar una función sin hacer un nuevo despliegue. En NovaTech se usan para liberar funciones poco a poco y para apagar rápido una que cause problemas. Primero se activa para el equipo interno, después para algunos clientes de prueba y al final para todos. Cada flag tiene un nombre claro, un responsable y una fecha estimada para retirarlo. Una vez que la función está estable en producción para todos los clientes, el flag se elimina del código en un plazo máximo de dos sprints. Se debe evitar tener flags dentro de otros flags, porque complica las pruebas. Las pruebas automáticas deben cubrir la función tanto encendida como apagada.

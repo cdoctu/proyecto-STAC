@@ -1,0 +1,3 @@
+Guía de configuración y variables de entorno
+
+La configuración de cada servicio cambia según el ambiente, por lo que no debe escribirse dentro del código. Direcciones de bases de datos, llaves de APIs y contraseñas se guardan en variables de entorno. Las variables sensibles se almacenan en el servicio de secretos de AWS y el pipeline las entrega al contenedor al momento de iniciar. En el repositorio solo se incluye un archivo de ejemplo, llamado .env.example, con los nombres de las variables y valores falsos. Los ambientes de desarrollo, staging y producción usan configuraciones separadas y nunca comparten llaves. Si una llave se sube por error al repositorio, se debe cambiar de inmediato y avisar al equipo de seguridad. Las llaves se rotan al menos una vez al año.

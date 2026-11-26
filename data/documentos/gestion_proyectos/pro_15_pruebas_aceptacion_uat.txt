@@ -1,0 +1,3 @@
+Procedimiento de pruebas de aceptación del usuario
+
+Las pruebas de aceptación del usuario, o UAT, se hacen antes de entregar el producto para confirmar que cumple lo que el cliente pidió. El tester y el líder de proyecto preparan una lista de casos de prueba basada en los criterios de aceptación de las historias. El cliente designa a dos o tres usuarios que ejecutan los casos en el ambiente de staging durante una semana. Cada error se registra con los pasos para repetirlo y se clasifica como crítico, importante o menor. Los críticos deben corregirse antes de la entrega y los demás se acuerdan con el cliente. Cuando todos los casos pasan, el cliente firma el acta de aceptación de pruebas. Sin esa firma no se programa el despliegue a producción.

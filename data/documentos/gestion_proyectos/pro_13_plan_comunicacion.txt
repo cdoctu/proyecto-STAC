@@ -1,0 +1,3 @@
+Plan de comunicación del proyecto
+
+El plan de comunicación define quién recibe qué información, con qué frecuencia y por qué medio. El equipo se comunica a diario en la reunión daily y por el chat del proyecto. El líder de proyecto envía al cliente un reporte de avance cada semana por correo y se reúne con él cada dos semanas en la revisión del sprint. El patrocinador recibe un resumen mensual con el avance, el presupuesto gastado y los riesgos principales. Los acuerdos importantes siempre se confirman por escrito en una minuta, que se envía a los asistentes el mismo día. Las decisiones que cambian el alcance, el costo o la fecha no se aceptan por mensaje informal, sino que siguen el procedimiento de control de cambios. El plan se revisa si cambia el equipo.

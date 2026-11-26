@@ -1,0 +1,3 @@
+Guía de gestión de interesados del proyecto
+
+Los interesados son las personas que pueden afectar el proyecto o ser afectadas por él, como el patrocinador, el cliente, los usuarios finales y el equipo. Al inicio, el líder de proyecto los identifica y los registra en una tabla con su rol, su nivel de interés y su nivel de influencia. Con esa información decide cómo comunicarse con cada uno: a los de mucha influencia e interés se les mantiene muy cerca y a los de poca influencia solo se les informa de los avances generales. La tabla se revisa cada mes, porque las personas y sus expectativas cambian. Si un interesado muestra preocupación o resistencia, el líder de proyecto habla con él lo antes posible para entender el motivo y buscar un acuerdo.

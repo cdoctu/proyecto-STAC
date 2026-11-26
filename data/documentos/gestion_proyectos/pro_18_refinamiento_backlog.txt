@@ -1,0 +1,3 @@
+Guía de refinamiento del backlog
+
+El refinamiento del backlog es una reunión semanal de una hora donde el equipo y el product owner preparan las historias de los próximos sprints. Se revisan las historias con mayor prioridad, se aclaran sus dudas y se escriben criterios de aceptación claros. Las historias grandes, de 8 puntos o más, se dividen en otras más pequeñas. El equipo las estima con planning poker y el product owner ajusta la prioridad según lo que pide el cliente. Se eliminan las historias que ya no tienen sentido. El objetivo es que siempre haya trabajo listo para al menos dos sprints, de manera que la reunión de planeación sea rápida. Las historias que no cumplen la definición de listo no se incluyen en el siguiente sprint.

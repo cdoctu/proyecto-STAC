@@ -1,0 +1,3 @@
+Procedimiento para manejar la deuda técnica
+
+La deuda técnica son las soluciones rápidas o los diseños pobres que hoy ahorran tiempo, pero después hacen más difícil el trabajo. Cuando un desarrollador identifica una deuda, la registra en el backlog con la etiqueta deuda-tecnica, una descripción del problema y el riesgo de no atenderlo. El líder técnico y el product owner revisan estas tareas cada mes y las ordenan por impacto. En cada sprint se reserva cerca del 20 % de la capacidad del equipo para atender deuda técnica. Al corregir una deuda se aplica la regla del boy scout: dejar el código un poco mejor de como se encontró. Las refactorizaciones grandes se dividen en pasos pequeños y siempre se acompañan de pruebas automáticas.

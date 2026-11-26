@@ -1,0 +1,3 @@
+Política de horas extra y guardias
+
+Las horas extra solo se trabajan cuando existe una necesidad del proyecto y con autorización previa del jefe directo. La ley permite un máximo de tres horas extra al día y nueve a la semana. Las primeras nueve horas semanales se pagan al doble y las siguientes al triple. El colaborador registra sus horas en el sistema de asistencia y su jefe las aprueba antes del cierre de la quincena. Los equipos de desarrollo y soporte tienen guardias para atender incidentes críticos fuera del horario normal. La guardia se asigna por turnos de una semana y se informa con anticipación. Quien está de guardia recibe un pago adicional y un día de descanso compensatorio si tuvo que atender un incidente durante la noche o en fin de semana.

@@ -1,0 +1,3 @@
+Documentación de la API de inventarios
+
+La API de inventarios permite que los sistemas de los clientes consulten productos y registren movimientos de mercancía. Usa HTTPS, devuelve JSON y requiere el mismo token de autenticación que la API de facturación. El endpoint GET /api/v2/productos devuelve la lista de productos y acepta los filtros almacen y codigo. El endpoint POST /api/v2/movimientos registra una entrada o una salida y recibe el producto, el almacén, la cantidad y el tipo de movimiento. Si la cantidad de una salida es mayor a la existencia, la API responde con el código 409 y un mensaje claro. Las listas largas se entregan por páginas de 50 registros. Cada cliente puede hacer hasta 100 peticiones por minuto.

@@ -1,0 +1,3 @@
+Artículo de base de conocimiento: error de RFC al timbrar
+
+Síntoma: al timbrar aparece el mensaje El RFC del receptor no es válido o no coincide con el nombre. Causa: el RFC, el nombre o el código postal capturados no son iguales a los que tiene registrados el SAT. Solución: pedir al cliente su constancia de situación fiscal actualizada y comparar los datos letra por letra. El nombre debe escribirse sin el régimen de sociedad, por ejemplo, sin la abreviatura S.A. de C.V., y sin acentos si así aparece en la constancia. Corregir los datos en el módulo Clientes y volver a timbrar. Si el cliente es extranjero, usar el RFC genérico que corresponda. Si el error continúa después de corregir los datos, escalar el ticket a nivel 2 con una captura de la constancia.

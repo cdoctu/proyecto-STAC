@@ -1,0 +1,3 @@
+Política de uso de VPN y redes inalámbricas
+
+La VPN protege la información que viaja entre el colaborador y los sistemas de NovaTech. Debe activarse siempre que se trabaje desde casa, desde un cliente o desde cualquier red que no sea la de la oficina. Al conectar la laptop a un wifi público, como el de un café o un aeropuerto, es obligatorio usar la VPN antes de abrir cualquier sistema de la empresa. En la oficina existen dos redes: una para los colaboradores y otra para visitas, que no tiene acceso a los sistemas internos. Los dispositivos personales solo se conectan a la red de visitas. Las claves del wifi de la oficina las cambia el área de sistemas cada seis meses. Si la VPN falla, el colaborador debe avisar a sistemas y no puede conectarse por otros medios.

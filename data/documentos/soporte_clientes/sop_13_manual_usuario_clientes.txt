@@ -1,0 +1,3 @@
+Manual de usuario: cómo registrar clientes y sus datos fiscales
+
+Manual de usuario: cómo registrar clientes y sus datos fiscales. Paso 1: entra al módulo Clientes y haz clic en Nuevo cliente. Paso 2: escribe el nombre o la razón social tal como aparece en su constancia de situación fiscal. Paso 3: captura el RFC, el código postal fiscal y el régimen fiscal. Paso 4: elige el uso de CFDI que normalmente se aplica, por ejemplo, gastos en general. Paso 5: agrega el correo electrónico al que se enviarán las facturas. Paso 6: haz clic en Guardar. El sistema valida el RFC y muestra un aviso si hay un error. Los datos deben coincidir exactamente con los del SAT para que la factura pueda timbrarse. Para modificar un cliente, búscalo en la lista y elige Editar.

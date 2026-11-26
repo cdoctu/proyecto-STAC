@@ -1,0 +1,3 @@
+Procedimiento de capacitación para clientes nuevos
+
+Cuando una empresa contrata la plataforma, el equipo de soporte le ofrece una capacitación inicial para que empiece a usarla sin dificultades. El agente asignado contacta al cliente en las primeras 48 horas y agenda una sesión virtual de una hora y media. En la sesión se revisan la carga de certificados, el registro de clientes y productos, la emisión de facturas y el uso del módulo de inventarios. Al terminar, se envían al cliente los manuales de usuario, una lista de preguntas frecuentes y los datos para pedir ayuda. A los siete días el agente llama al cliente para saber cómo le ha ido y resolver dudas. Se registra la capacitación en el expediente y se pide al cliente su opinión con la encuesta de satisfacción.

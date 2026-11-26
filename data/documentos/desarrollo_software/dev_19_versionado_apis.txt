@@ -1,0 +1,3 @@
+Política de versionado de APIs
+
+Los clientes dependen de nuestras APIs para operar, por eso los cambios deben hacerse con cuidado. La versión principal va en la dirección del endpoint, por ejemplo /api/v2/facturas. Dentro de una misma versión solo se permiten cambios que no rompan a los clientes, como agregar un campo nuevo o un endpoint nuevo. Si un cambio elimina un campo o modifica su significado, se debe publicar una versión nueva. Cuando se lanza una versión nueva, la anterior sigue funcionando por lo menos seis meses. Se avisa a los clientes por correo y en el portal de desarrolladores con tres meses de anticipación a la fecha de retiro. Las respuestas de la versión antigua incluyen un encabezado que indica que está por desaparecer.

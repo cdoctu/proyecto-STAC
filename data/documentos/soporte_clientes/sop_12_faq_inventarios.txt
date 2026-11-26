@@ -1,0 +1,3 @@
+Preguntas frecuentes sobre el módulo de inventarios
+
+Preguntas frecuentes sobre inventarios. ¿Cómo cargo muchos productos a la vez? En la sección Productos se usa el botón Importar y se sube la plantilla de Excel que se puede descargar en la misma pantalla. ¿Por qué mi inventario no bajó al facturar? Revisa que el producto de la factura esté registrado en Productos y que el almacén seleccionado sea el correcto. ¿Puedo tener el mismo producto en varios almacenes? Sí, el sistema lleva la existencia de cada almacén por separado. ¿Cómo traspaso mercancía entre almacenes? En Movimientos se elige Traspaso, el almacén de origen y el de destino. ¿Cómo corrijo una cantidad equivocada? Se hace un movimiento de ajuste con un comentario. Si sigues con dudas, crea un ticket.

@@ -1,0 +1,3 @@
+Guía de seguimiento con gráfica burndown
+
+La gráfica burndown muestra cuántos puntos de historia faltan por terminar a lo largo del sprint. En el eje horizontal se ponen los días del sprint y en el vertical los puntos pendientes. Una línea ideal baja de forma pareja desde el total hasta cero, y la línea real se actualiza cada día con el avance del equipo. Si la línea real está muy arriba de la ideal, significa que el equipo va retrasado y debe revisarse qué lo está bloqueando. Si baja de golpe al final, probablemente las historias no se terminan poco a poco. La gráfica se comenta en la reunión daily. Al terminar el sprint se registra la velocidad real, que sirve para planear los siguientes sprints.

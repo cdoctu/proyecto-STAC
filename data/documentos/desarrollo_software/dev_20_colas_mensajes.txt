@@ -1,0 +1,3 @@
+Guía de uso de colas de mensajes
+
+Las colas de mensajes permiten que un servicio envíe tareas a otro sin esperar la respuesta. Se usan para enviar correos con facturas, generar reportes grandes y avisar cambios de inventario. Cada mensaje lleva un identificador único y el identificador de la petición original, para poder seguirlo en los logs. Los servicios que reciben mensajes deben ser idempotentes, es decir, si el mismo mensaje llega dos veces, el resultado debe ser el mismo y no se debe duplicar una factura. Si un mensaje falla, se reintenta hasta cinco veces con tiempos de espera cada vez más largos. Después de eso se manda a una cola de mensajes fallidos, que el equipo revisa todos los días. Hay una alerta cuando esa cola tiene más de diez mensajes.

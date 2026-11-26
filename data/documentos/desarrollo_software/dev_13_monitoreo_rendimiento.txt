@@ -1,0 +1,3 @@
+Guía de monitoreo y rendimiento
+
+El monitoreo permite saber cómo se comporta la plataforma antes de que los clientes reporten problemas. Cada servicio publica métricas como el tiempo de respuesta, el uso de memoria y la cantidad de errores por minuto. Estas métricas se muestran en tableros que el equipo puede consultar en cualquier momento. El objetivo es que el 95 % de las peticiones a la API responda en menos de 500 milisegundos. Si el tiempo de respuesta supera ese valor durante diez minutos seguidos, se envía una alerta al canal de Slack del equipo de guardia. Antes de cada versión importante se hacen pruebas de carga en staging para comprobar que el servicio soporta el doble del tráfico normal. Los hallazgos se registran para mejorar el diseño.

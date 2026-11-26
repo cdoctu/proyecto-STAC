@@ -1,0 +1,3 @@
+Guía para preparar el ambiente local de desarrollo
+
+Esta guía explica cómo preparar la computadora para trabajar en los servicios de NovaTech. Primero se instalan Git, Docker y el editor de código aprobado por el equipo. Después se clona el repositorio del servicio y se copia el archivo .env.example como .env. Con el comando docker compose up se levantan el servicio, la base de datos PostgreSQL y la cola de mensajes con datos de prueba. Nunca se debe usar una copia de la base de datos de producción en la laptop, porque contiene información de clientes. Para correr las pruebas se usa el comando indicado en el README. Si algo no funciona después de seguir los pasos, el desarrollador lo avisa en el canal del equipo y corrige la guía.

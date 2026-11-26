@@ -1,0 +1,3 @@
+Procedimiento de seguimiento del presupuesto
+
+El líder de proyecto da seguimiento al presupuesto cada semana para evitar sorpresas. Se compara el gasto real contra el gasto planeado y se calcula cuánto del presupuesto se ha usado frente al avance logrado. Por ejemplo, si el proyecto lleva 40 % de avance y ya se gastó el 55 %, existe una desviación que debe analizarse. Los gastos principales son las horas del equipo, las licencias y los servicios de nube. Si la desviación es mayor al 10 %, el líder de proyecto prepara un informe con las causas y las opciones para corregirla, y se lo presenta al patrocinador. Todo aumento de presupuesto se aprueba por escrito por medio del control de cambios. Al cierre se registra el presupuesto final para mejorar futuras estimaciones.

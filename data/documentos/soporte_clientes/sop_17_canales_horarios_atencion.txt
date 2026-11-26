@@ -1,0 +1,3 @@
+Canales y horarios de atención
+
+Los clientes de NovaTech pueden pedir ayuda por cuatro canales: el portal de ayuda, el correo de soporte, el chat dentro de la plataforma y el teléfono. El horario de atención es de lunes a viernes de 8 a 19 horas, hora del centro de México. El chat y el teléfono se atienden en tiempo real, mientras que el portal y el correo reciben una respuesta de acuerdo con el SLA. Fuera de horario solo se atienden los tickets de prioridad crítica por medio de un teléfono de emergencia que se entrega a los clientes. En días festivos se publica un aviso en el portal con anticipación. Sin importar el canal, todas las solicitudes se registran como tickets para que tengan seguimiento. Los clientes reciben el número de ticket en su correo.
