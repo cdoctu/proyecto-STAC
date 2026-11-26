@@ -1,83 +1,35 @@
-from src.chatbot import iniciar_chatbot
-from src.busqueda_semantica import menu as menu_busqueda
-from src.clasificador import (
-	dividir_datos,
-	evaluar_validacion_cruzada,
-	clasificar_nuevos,
-	guardar_modelo,
-	vectorizar_y_entrenar,
-)
-from src.preprocesamiento import cargar_nuevos, cargar_textos, limpiar_texto
-from src.recomendador import menu_recomendador
+"""Punto de entrada de la interfaz web del Proyecto STAC · NovaTech Soluciones.
 
+Ejecútalo desde la raíz del proyecto con:
 
-def ejecutar_clasificador() -> None:
-	df = cargar_textos()
-	df["texto_limpio"] = df["texto"].apply(limpiar_texto)
+	streamlit run main.py
 
-	print(f"Documentos cargados: {len(df)}")
-	print("\nMuestra de textos limpios:")
-	print(df[["texto_limpio", "categoria"]].head(10))
+Cada módulo de src/ define su propia página (pagina_*); aquí solo se navega.
+"""
 
-	df_train, df_test = dividir_datos(df)
-	print(f"\nDocumentos de entrenamiento: {len(df_train)}")
-	print(f"Documentos de prueba: {len(df_test)}")
-	evaluar_validacion_cruzada(df_train)
-	modelo = vectorizar_y_entrenar(df_train, df_test)
-	modelo.fit(df["texto_limpio"], df["categoria"])
-	guardar_modelo(modelo)
+import streamlit as st
 
-	df_nuevos = cargar_nuevos()
-	df_nuevos["texto_limpio"] = df_nuevos["texto"].apply(limpiar_texto)
-	clasificar_nuevos(modelo, df_nuevos)
+from src.busqueda_semantica import pagina_buscador
+from src.chatbot import pagina_chatbot
+from src.clasificador import pagina_clasificador
+from src.recomendador import pagina_recomendador
 
-
-def ejecutar_buscador() -> None:
-	menu_busqueda(desde_main=True)
-
-
-def ejecutar_recomendador() -> None:
-	menu_recomendador()
-
-
-def ejecutar_chatbot() -> None:
-	iniciar_chatbot()
+PAGINAS = {
+	"🗂️ Clasificador de documentos": pagina_clasificador,
+	"🔎 Buscador de documentos": pagina_buscador,
+	"⭐ Recomendador de documentos": pagina_recomendador,
+	"💬 Chatbot de documentos": pagina_chatbot,
+}
 
 
 def main() -> None:
-	try:
-		while True:
-			print("\n" + "=" * 58)
-			print("  PROYECTO STAC · NovaTech Soluciones")
-			print("=" * 58)
-			print("  1. Clasificador de documentos")
-			print("  2. Buscador de documentos (búsqueda semántica)")
-			print("  3. Recomendador de documentos")
-			print("  4. Chatbot de documentos")
-			print("  5. Ejecutar todo (clasificador, buscador y recomendador)")
-			print("  0. Salir")
-			opcion = input("\nElige una opción: ").strip()
+	st.set_page_config(page_title="STAC · NovaTech", page_icon="📄", layout="wide")
 
-			if opcion == "1":
-				ejecutar_clasificador()
-			elif opcion == "2":
-				ejecutar_buscador()
-			elif opcion == "3":
-				ejecutar_recomendador()
-			elif opcion == "4":
-				ejecutar_chatbot()
-			elif opcion == "5":
-				ejecutar_clasificador()
-				ejecutar_buscador()
-				ejecutar_recomendador()
-			elif opcion == "0":
-				break
-			else:
-				print("Opción no válida.")
-	except (EOFError, KeyboardInterrupt):
-		pass
-	print("\nHasta luego.")
+	st.sidebar.title("PROYECTO STAC")
+	st.sidebar.caption("NovaTech Soluciones")
+	seleccion = st.sidebar.radio("Módulo", list(PAGINAS), label_visibility="collapsed")
+
+	PAGINAS[seleccion]()
 
 
-if __name__ == "__main__":
-	main()
+main()

@@ -1,8 +1,13 @@
+import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from src.preprocesamiento import cargar_textos, fragmentar_texto, limpiar_texto
 
+
+# ---------------------------------------------------------------------------
+# Lógica del chatbot
+# ---------------------------------------------------------------------------
 
 def crear_indice(tamanio_chunk: int = 500, solapamiento: int = 50):
     """Carga los documentos y crea una matriz TF-IDF reutilizable."""
@@ -60,19 +65,58 @@ def buscar_respuesta(pregunta: str, indice) -> str:
     )
 
 
-def iniciar_chatbot() -> None:
-    indice = crear_indice()
-    print(f"Chatbot listo. Fragmentos indexados: {len(indice[0])}")
-    print("Escribe 'salir' para terminar.")
+# ---------------------------------------------------------------------------
+# Interfaz Streamlit
+# ---------------------------------------------------------------------------
 
-    while True:
-        try:
-            pregunta = input("\nPregunta: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print()
-            break
+@st.cache_resource(show_spinner="Creando índice del chatbot...")
+def indice_cacheado():
+    """El índice se crea una sola vez, no en cada mensaje."""
+    return crear_indice()
 
-        if pregunta.lower() in {"salir", "0"}:
-            break
-        if pregunta:
-            print(f"\n{buscar_respuesta(pregunta, indice)}")
+
+def _mostrar_respuesta(texto: str) -> None:
+    """Separa el fragmento de la fuente para mostrarlos con mejor formato."""
+    if "\n\nFuente: " not in texto:
+        st.write(texto)
+        return
+    fragmento, fuente = texto.split("\n\nFuente: ", 1)
+    st.markdown("**Fragmento relevante:**")
+    st.info(fragmento.removeprefix("Fragmento relevante:\n"))
+    st.caption(f"📄 Fuente: {fuente}")
+
+
+def pagina_chatbot() -> None:
+    st.header("💬 Chatbot de documentos")
+    try:
+        indice = indice_cacheado()
+    except ValueError as error:
+        st.error(str(error))
+        return
+
+    st.caption(
+        f"Fragmentos indexados: {len(indice[0])}. "
+        "Responde con el fragmento más relevante de los documentos."
+    )
+
+    if "chat_mensajes" not in st.session_state:
+        st.session_state["chat_mensajes"] = []
+
+    if st.session_state["chat_mensajes"] and st.button("🧹 Limpiar conversación"):
+        st.session_state["chat_mensajes"] = []
+        st.rerun()
+
+    for mensaje in st.session_state["chat_mensajes"]:
+        with st.chat_message(mensaje["rol"]):
+            if mensaje["rol"] == "user":
+                st.write(mensaje["texto"])
+            else:
+                _mostrar_respuesta(mensaje["texto"])
+
+    pregunta = st.chat_input("Escribe tu pregunta...")
+    if pregunta and pregunta.strip():
+        st.session_state["chat_mensajes"] += [
+            {"rol": "user", "texto": pregunta.strip()},
+            {"rol": "assistant", "texto": buscar_respuesta(pregunta.strip(), indice)},
+        ]
+        st.rerun()

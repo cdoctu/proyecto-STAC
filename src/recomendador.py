@@ -4,6 +4,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -362,164 +363,216 @@ def crear_recomendador():
 	return Recomendador()
 
 
-# Pantallas del menú
+# ---------------------------------------------------------------------------
+# Interfaz Streamlit
+# ---------------------------------------------------------------------------
 
-def mostrar_lista(titulo, tabla, mostrados, etiqueta="Puntaje"):
-	"""Imprime una lista de documentos. Los números siguen la cuenta de mostrados para poder elegir uno."""
-	print(f"\n{titulo}")
+@st.cache_resource(show_spinner="Preparando el recomendador...")
+def recomendador_cacheado():
+	"""El recomendador se crea una sola vez, no en cada interacción."""
+	return crear_recomendador()
+
+
+def texto_sin_titulo(texto):
+	"""Documento sin la primera línea (el título), listo para mostrar en Markdown."""
+	return "\n".join(texto.splitlines()[1:]).strip().replace("\n", "  \n")
+
+
+def usuario_actual():
+	return st.session_state.get("rec_usuario", "").strip() or "invitado"
+
+
+def _al_cambiar_usuario():
+	st.session_state.pop("rec_busqueda", None)
+	st.session_state["rec_leyendo"] = None
+
+
+def abrir_documento(id_documento):
+	"""Callback de los botones Leer: anota la lectura y abre el documento."""
+	recomendador_cacheado().registrar_lectura(usuario_actual(), id_documento)
+	st.session_state["rec_leyendo"] = id_documento
+
+
+def cerrar_documento():
+	st.session_state["rec_leyendo"] = None
+
+
+def mostrar_lista(tabla, prefijo, etiqueta="Puntaje"):
+	"""Lista de documentos con un botón Leer. El prefijo evita llaves repetidas."""
 	if tabla.empty:
-		print("  No hay documentos para mostrar.")
+		st.info("No hay documentos para mostrar.")
 		return
 	for _, fila in tabla.iterrows():
-		mostrados.append(fila["id"])
-		print(f"\n  {len(mostrados)}. {fila['titulo']}")
-		print(f"     Área: {nombre_area(fila['categoria'])}  |  {etiqueta}: {fila['puntaje']}")
-		print(f"     {fila['resumen']}")
-		if "motivo" in tabla.columns and fila["motivo"]:
-			print(f"     Motivo: {fila['motivo']}")
+		with st.container(border=True):
+			col_texto, col_boton = st.columns([6, 1])
+			col_texto.markdown(f"**{fila['titulo']}**")
+			col_texto.caption(f"Área: {nombre_area(fila['categoria'])}  ·  {etiqueta}: {fila['puntaje']}")
+			col_texto.write(fila["resumen"])
+			if "motivo" in tabla.columns and fila["motivo"]:
+				col_texto.caption(f"💡 Motivo: {fila['motivo']}")
+			col_boton.button(
+				"📖 Leer",
+				key=f"{prefijo}_{fila['id']}",
+				on_click=abrir_documento,
+				args=(fila["id"],),
+			)
 
 
-def pedir_documento(mostrados):
-	"""Pide el número de un documento de la lista. Devuelve su id, o None si la persona vuelve."""
-	if not mostrados:
-		return None
-	opcion = input("\nEscribe el número de un documento para leerlo (Enter para volver): ").strip()
-	if opcion.isdigit() and 1 <= int(opcion) <= len(mostrados):
-		return mostrados[int(opcion) - 1]
-	return None
-
-
-def leer_y_sugerir(recomendador, usuario, id_documento):
-	"""Muestra un documento, lo anota en el historial y sugiere otros parecidos. Se repite hasta que la persona vuelva."""
-	while id_documento:
-		fila = recomendador.documentos[recomendador.documentos["id"] == id_documento].iloc[0]
-		print(f"\n{fila['titulo']}")
-		print(f"Área: {nombre_area(fila['categoria'])}  |  Id: {fila['id']}\n")
-		print("\n".join(fila["texto"].splitlines()[1:]).strip())
-		recomendador.registrar_lectura(usuario, id_documento)
-
-		mostrados = []
-		mostrar_lista("Documentos parecidos a este", recomendador.similares(id_documento, 3), mostrados, "Similitud")
-		id_documento = pedir_documento(mostrados)
-
-
-def buscar_con_recomendaciones(recomendador, usuario):
-	consulta = input("\nEscribe tu pregunta con tus propias palabras: ").strip()
-	if not consulta:
+def mostrar_lector(recomendador):
+	"""Documento abierto, con sugerencias de otros parecidos."""
+	id_documento = st.session_state.get("rec_leyendo")
+	if not id_documento:
 		return
-	tiene_historial = bool(recomendador.historial.get(usuario))
-	resultados = recomendador.buscar(consulta, 3)
-	recomendados = recomendador.recomendar(usuario, consulta, 3, excluir=resultados["id"])
-	recomendador.registrar_consulta(usuario, consulta)
+	coincidencias = recomendador.documentos[recomendador.documentos["id"] == id_documento]
+	if coincidencias.empty:
+		return
+	fila = coincidencias.iloc[0]
 
-	mostrados = []
-	mostrar_lista(f"Resultados para: {consulta}", resultados, mostrados, "Similitud")
+	with st.container(border=True):
+		st.subheader(fila["titulo"])
+		st.caption(f"Área: {nombre_area(fila['categoria'])}  ·  Id: {fila['id']}")
+		st.markdown(texto_sin_titulo(fila["texto"]))
+		st.markdown("**Documentos parecidos a este**")
+		mostrar_lista(recomendador.similares(id_documento, 3), "sim", "Similitud")
+		st.button("✖ Cerrar documento", on_click=cerrar_documento)
+	st.divider()
+
+
+def _modo_buscar(recomendador, usuario):
+	with st.form("rec_form_busqueda"):
+		consulta = st.text_input("Escribe tu pregunta con tus propias palabras")
+		enviado = st.form_submit_button("Buscar", type="primary")
+
+	if enviado and consulta.strip():
+		consulta = consulta.strip()
+		tiene_historial = bool(recomendador.historial.get(usuario))
+		resultados = recomendador.buscar(consulta, 3)
+		recomendados = recomendador.recomendar(usuario, consulta, 3, excluir=resultados["id"])
+		recomendador.registrar_consulta(usuario, consulta)
+		st.session_state["rec_busqueda"] = (consulta, resultados, recomendados, tiene_historial)
+
+	guardado = st.session_state.get("rec_busqueda")
+	if not guardado:
+		return
+	consulta, resultados, recomendados, tiene_historial = guardado
+	st.markdown(f"#### Resultados para: {consulta}")
+	mostrar_lista(resultados, "res", "Similitud")
 	if tiene_historial:
-		mostrar_lista("También te pueden servir según tu historial", recomendados, mostrados)
+		st.markdown("#### También te pueden servir según tu historial")
+		mostrar_lista(recomendados, "reco")
 	else:
-		print("\nCuando tengas historial, aquí verás recomendaciones pensadas para ti.")
-	leer_y_sugerir(recomendador, usuario, pedir_documento(mostrados))
+		st.info("Cuando tengas historial, aquí verás recomendaciones pensadas para ti.")
 
 
-def recomendaciones_del_historial(recomendador, usuario):
+def _modo_segun_historial(recomendador, usuario):
 	tabla = recomendador.recomendar(usuario, k=3)
 	if tabla.empty:
-		print("\nTodavía no hay historial para recomendar. Haz una búsqueda primero (opción 1).")
-		return
-	mostrados = []
-	mostrar_lista("Recomendaciones según tu historial", tabla, mostrados)
-	leer_y_sugerir(recomendador, usuario, pedir_documento(mostrados))
+		st.info("Todavía no hay historial para recomendar. Haz una búsqueda primero.")
+	else:
+		mostrar_lista(tabla, "his")
 
 
-def explorar_documentos(recomendador, usuario):
-	"""Lista todos los documentos por área para elegir uno."""
-	mostrados = []
+def _modo_explorar(recomendador):
 	for categoria, grupo in recomendador.documentos.groupby("categoria"):
-		print(f"\n{nombre_area(categoria)}")
-		for _, fila in grupo.iterrows():
-			mostrados.append(fila["id"])
-			print(f"  {len(mostrados)}. {fila['titulo']}")
-	leer_y_sugerir(recomendador, usuario, pedir_documento(mostrados))
+		with st.expander(nombre_area(categoria)):
+			for _, fila in grupo.iterrows():
+				col_titulo, col_boton = st.columns([6, 1])
+				col_titulo.write(fila["titulo"])
+				col_boton.button(
+					"📖 Leer",
+					key=f"exp_{fila['id']}",
+					on_click=abrir_documento,
+					args=(fila["id"],),
+				)
 
 
-def ver_historial(recomendador, usuario):
+def _modo_ver_historial(recomendador, usuario):
 	eventos = recomendador.historial.get(usuario, [])
 	if not eventos:
-		print("\nTu historial está vacío.")
+		st.info("Tu historial está vacío.")
 		return
-	print(f"\nHistorial de {usuario} (últimos {min(len(eventos), 15)} eventos):")
-	for evento in eventos[-15:]:
-		if evento["tipo"] == "lectura":
-			detalle = f"leíste: {recomendador.titulo(evento['valor'])}"
-		else:
-			detalle = f"consulta: {evento['valor']}"
-		print(f"  {evento['fecha']}  {detalle}")
+
+	filas = [{
+		"Fecha": e["fecha"],
+		"Tipo": "Lectura" if e["tipo"] == "lectura" else "Consulta",
+		"Detalle": recomendador.titulo(e["valor"]) if e["tipo"] == "lectura" else e["valor"],
+	} for e in reversed(eventos)]
+	st.dataframe(pd.DataFrame(filas), hide_index=True)
+
+	st.divider()
+	confirmar = st.checkbox("Confirmo que quiero borrar mi historial")
+	if st.button("🗑️ Borrar mi historial", disabled=not confirmar):
+		recomendador.borrar_historial(usuario)
+		st.session_state.pop("rec_busqueda", None)
+		st.rerun()
 
 
-def probar_recomendador(recomendador):
-	"""Muestra y guarda las dos evaluaciones del recomendador."""
-	similares = recomendador.evaluar_similares(3)
-	print("\nDocumentos parecidos: porcentaje de los 3 recomendados que son de la misma área que el documento de origen")
-	for _, fila in similares.iterrows():
-		print(f"  {nombre_area(fila['categoria']):<30} {fila['precision']:.0%}")
-	print(f"  {'Promedio':<30} {similares['precision'].mean():.0%}")
+def _modo_evaluar(recomendador):
+	st.write("Mide qué tan bien recomienda el sistema (no toca tu historial guardado).")
+	if not st.button("▶️ Ejecutar evaluación"):
+		return
 
-	historial = recomendador.evaluar_historial(3)
-	print("\nRecomendaciones según el historial: porcentaje de los 3 recomendados que son del área esperada")
-	for _, fila in historial.iterrows():
-		print(f"\n  Historial de {nombre_area(fila['area_esperada'])}: {fila['consultas']}")
-		print(f"  Recomendados: {fila['recomendados']}")
-		print(f"  Aciertos: {fila['precision']:.0%}")
-	print(f"\n  Promedio: {historial['precision'].mean():.0%}")
+	with st.spinner("Evaluando..."):
+		similares = recomendador.evaluar_similares(3)
+		historial = recomendador.evaluar_historial(3)
+		CARPETA_RESULTADOS.mkdir(exist_ok=True)
+		similares.to_csv(CARPETA_RESULTADOS / "recomendador_similares.csv", index=False, encoding="utf-8")
+		historial.to_csv(CARPETA_RESULTADOS / "recomendador_historial.csv", index=False, encoding="utf-8")
 
-	CARPETA_RESULTADOS.mkdir(exist_ok=True)
-	similares.to_csv(CARPETA_RESULTADOS / "recomendador_similares.csv", index=False, encoding="utf-8")
-	historial.to_csv(CARPETA_RESULTADOS / "recomendador_historial.csv", index=False, encoding="utf-8")
-	print(f"\nTablas guardadas en: {CARPETA_RESULTADOS}")
+	st.markdown("**Documentos parecidos** — % de los 3 recomendados de la misma área que el documento de origen")
+	st.dataframe(pd.DataFrame({
+		"Área": similares["categoria"].map(nombre_area),
+		"Precisión": similares["precision"].map("{:.0%}".format),
+	}), hide_index=True)
+	st.metric("Promedio", f"{similares['precision'].mean():.0%}")
+
+	st.markdown("**Recomendaciones según el historial** — % de los 3 recomendados del área esperada")
+	st.dataframe(pd.DataFrame({
+		"Área esperada": historial["area_esperada"].map(nombre_area),
+		"Consultas": historial["consultas"],
+		"Recomendados": historial["recomendados"],
+		"Precisión": historial["precision"].map("{:.0%}".format),
+	}), hide_index=True)
+	st.metric("Promedio", f"{historial['precision'].mean():.0%}")
+
+	st.caption(f"Tablas guardadas en: {CARPETA_RESULTADOS}")
 
 
-def pedir_usuario():
-	nombre = input("\nEscribe tu nombre para guardar tu historial (Enter para usar invitado): ").strip()
-	return nombre or "invitado"
+def pagina_recomendador():
+	st.header("⭐ Recomendador de documentos")
+	recomendador = recomendador_cacheado()
 
+	col_nombre, col_info = st.columns([2, 3])
+	col_nombre.text_input(
+		"Tu nombre (para guardar tu historial)",
+		key="rec_usuario",
+		placeholder="invitado",
+		on_change=_al_cambiar_usuario,
+	)
+	usuario = usuario_actual()
+	total = len(recomendador.historial.get(usuario, []))
+	col_info.markdown(
+		f"<br>Método: **{recomendador.vectorizador.nombre}** · Persona: **{usuario}** · "
+		f"Historial: **{total}** eventos",
+		unsafe_allow_html=True,
+	)
 
-def menu_recomendador():
-	recomendador = crear_recomendador()
-	usuario = pedir_usuario()
+	mostrar_lector(recomendador)
 
-	while True:
-		total = len(recomendador.historial.get(usuario, []))
-		print("\n" + "=" * 58)
-		print("  RECOMENDADOR DE DOCUMENTOS · NovaTech Soluciones")
-		print("=" * 58)
-		print(f"  Método: {recomendador.vectorizador.nombre} | Persona: {usuario} | Historial: {total} eventos")
-		print("  1. Buscar y recibir recomendaciones")
-		print("  2. Ver recomendaciones según mi historial")
-		print("  3. Explorar los documentos y ver los parecidos")
-		print("  4. Ver mi historial")
-		print("  5. Borrar mi historial")
-		print("  6. Cambiar de persona")
-		print("  7. Probar el recomendador")
-		print("  0. Volver al menú principal")
-		opcion = input("\nElige una opción: ").strip()
+	modo = st.radio(
+		"Qué quieres hacer",
+		["Buscar y recibir recomendaciones", "Según mi historial", "Explorar documentos",
+		 "Mi historial", "Probar el recomendador"],
+		horizontal=True,
+	)
 
-		if opcion == "1":
-			buscar_con_recomendaciones(recomendador, usuario)
-		elif opcion == "2":
-			recomendaciones_del_historial(recomendador, usuario)
-		elif opcion == "3":
-			explorar_documentos(recomendador, usuario)
-		elif opcion == "4":
-			ver_historial(recomendador, usuario)
-		elif opcion == "5":
-			if input("¿Seguro que quieres borrar tu historial? (s/n): ").strip().lower() == "s":
-				recomendador.borrar_historial(usuario)
-				print("  Historial borrado.")
-		elif opcion == "6":
-			usuario = pedir_usuario()
-		elif opcion == "7":
-			probar_recomendador(recomendador)
-		elif opcion == "0":
-			return
-		else:
-			print("  Opción no válida.")
+	if modo == "Buscar y recibir recomendaciones":
+		_modo_buscar(recomendador, usuario)
+	elif modo == "Según mi historial":
+		_modo_segun_historial(recomendador, usuario)
+	elif modo == "Explorar documentos":
+		_modo_explorar(recomendador)
+	elif modo == "Mi historial":
+		_modo_ver_historial(recomendador, usuario)
+	else:
+		_modo_evaluar(recomendador)
