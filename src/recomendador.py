@@ -12,7 +12,7 @@ from src.preprocesamiento import limpiar_texto
 BASE = Path(__file__).resolve().parent.parent
 CARPETA_DOCS = BASE / "data" / "documentos"
 CARPETA_RESULTADOS = BASE / "resultados"
-RUTA_HISTORIAL = BASE / "data" / "historial.json"
+RUTA_HISTORIAL = BASE / "historial" / "historial.json"
 
 # Si es True se usan embeddings de un modelo preentrenado en lugar de TF-IDF.
 # Hay que instalar sentence-transformers y tener internet la primera vez, porque descarga el modelo.

@@ -1,0 +1,6 @@
+.cache/
+cache/
+**/__pycache__/
+*.py[cod]
+**/*search*history*
+**/*search*historial*
